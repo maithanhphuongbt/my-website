@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Open App</title>
+</head>
+<body>
+
+<h2>Mở app bằng deeplink</h2>
+
+<button onclick="openApp()">Mở app</button>
+
+<script>
+function openApp() {
+  // Deeplink của app bạn
+  const deeplink = "senpay://payment?orderId=123";
+
+  // Fallback nếu chưa cài app
+  const fallback = "https://play.google.com/store/apps/details?id=vn.senpay.app";
+
+  // Thử mở app
+  window.location.href = deeplink;
+
+  // Sau 1.5s nếu app không mở → chuyển sang store
+  setTimeout(() => {
+    window.location.href = fallback;
+  }, 1500);
+}
+</script>
+
+</body>
+</html>
