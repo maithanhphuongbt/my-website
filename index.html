@@ -3,25 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <title>Open App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+    }
+
+    button {
+      width: 100%;
+      max-width: 320px;
+      padding: 18px;
+      font-size: 20px;
+      border-radius: 12px;
+      border: none;
+      background: #0066ff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+  </style>
 </head>
 <body>
 
-<h2>Mở app bằng deeplink</h2>
+<div class="container">
+  <h2>Mở ứng dụng Senpay</h2>
 
-<button onclick="openApp()">Mở app</button>
+  <button onclick="openApp()">🚀 MỞ APP NGAY</button>
+</div>
 
 <script>
 function openApp() {
-  // Deeplink của app bạn
-  const deeplink = "senpay://payment?orderId=123";
-
-  // Fallback nếu chưa cài app
+  const deeplink = "senpay-sdk://payment?orderId=123";
   const fallback = "https://play.google.com/store/apps/details?id=vn.senpay.app";
 
-  // Thử mở app
   window.location.href = deeplink;
 
-  // Sau 1.5s nếu app không mở → chuyển sang store
   setTimeout(() => {
     window.location.href = fallback;
   }, 1500);
